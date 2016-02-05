@@ -1,0 +1,17 @@
+<% content_for :page_title do %>
+  <%= link_to Spree.t(:Currencies), admin_currencies_url %>
+  / <%=@currency.name %>
+<% end 
+%>
+
+<%= form_for @currency, method: :put, :url => admin_currency_url(@currency), :html => {:id => "edit_dish_type", :multipart => true} do |f| %>
+	<fieldset data-hook="edit_currency">
+		<%= render :partial => 'form', :locals => { :f => f } %>
+		<div class="form-buttons filter-actions actions" data-hook="buttons">
+	        <%= button Spree.t('actions.update'), 'ok' %>
+	        <span class="or"><%= Spree.t(:or) %></span>
+	        <%= link_to_with_icon 'remove', Spree.t('actions.cancel'), admin_currency_url, :class => 'button' %>
+	    </div>
+    </fieldset>
+<% end %>
+
